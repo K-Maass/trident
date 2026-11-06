@@ -1,0 +1,15 @@
+# All times America/New_York; scheduler skips non-trading days via data/calendar.py.
+# Mirrors the table in docs/09_OPERATIONS.md — that doc explains each job.
+timezone: America/New_York
+jobs:
+  health_checks:        { cron: "30 7 * * MON-FRI", job: health.run_all }
+  data_sync:            { cron: "0 8 * * MON-FRI",  job: data.sync_all }
+  oracle_weekly:        { cron: "0 8 * * MON",      job: agents.run_oracle }
+  sentinel_daily:       { cron: "30 8 * * MON-FRI", job: agents.run_sentinel }
+  execution_window:     { cron: "35 9 * * MON-FRI", job: runner.execute_all_queued }
+  sentinel_monitor:     { cron: "0 10-15 * * MON-FRI", job: agents.sentinel_monitor }
+  eod_snapshot:         { cron: "15 16 * * MON-FRI", job: ledger.snapshot_and_reconcile }
+  daily_digest:         { cron: "25 16 * * MON-FRI", job: report.daily_digest }
+  weekly_report:        { cron: "0 10 * * SAT",     job: report.weekly }
+  quant_retrain:        { cron: "0 11 * * SAT",     job: quant.walk_forward_retrain, monthly_first_only: true }
+  oracle_triggers:      { cron: "0 18 * * SUN",     job: oracle.check_invalidation_triggers }

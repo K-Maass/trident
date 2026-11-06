@@ -1,0 +1,84 @@
+{
+  "cik": 123,
+  "entityName": "Demo Instruments",
+  "facts": {
+    "us-gaap": {
+      "RevenueFromContractWithCustomerExcludingAssessedTax": {
+        "units": {
+          "USD": [
+            {
+              "start": "2023-01-01",
+              "end": "2023-12-31",
+              "val": 350,
+              "fy": 2023,
+              "fp": "FY",
+              "form": "10-K",
+              "filed": "2024-02-15",
+              "frame": null
+            },
+            {
+              "start": "2021-01-01",
+              "end": "2021-12-31",
+              "val": 250,
+              "fy": 2021,
+              "fp": "FY",
+              "form": "10-K",
+              "filed": "2022-02-15",
+              "frame": null
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 440,
+              "fy": 2025,
+              "fp": "FY",
+              "form": "10-K",
+              "filed": "2026-02-15",
+              "frame": null
+            },
+            {
+              "start": "2022-01-01",
+              "end": "2022-12-31",
+              "val": 300,
+              "fy": 2022,
+              "fp": "FY",
+              "form": "10-K",
+              "filed": "2023-02-15",
+              "frame": null
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 400,
+              "fy": 2024,
+              "fp": "FY",
+              "form": "10-K",
+              "filed": "2025-02-15",
+              "frame": null
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 450,
+              "fy": 2025,
+              "fp": "FY",
+              "form": "10-K",
+              "filed": "2026-03-15",
+              "frame": null
+            },
+            {
+              "start": "2025-10-01",
+              "end": "2025-12-31",
+              "val": 120,
+              "fy": 2025,
+              "fp": "Q4",
+              "form": "10-Q",
+              "filed": "2026-01-28",
+              "frame": null
+            }
+          ]
+        }
+      }
+    }
+  }
+}

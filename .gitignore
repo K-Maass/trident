@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+data/cache/
+artifacts/
+*.parquet
+*.lgb
+logs/
+.DS_Store
+# Local agent tooling / scratch — never commit
+.agents/
+.codex/
+AGENTS.md
+
+.mcp.json
+.Rhistory

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Synthetic market feed</title>
+    <link>https://example.invalid/</link>
+    <description>Fictional parser fixture</description>
+    <item>
+      <title>Demo Instruments opens a test facility</title>
+      <link>https://example.invalid/rss/1</link>
+      <pubDate>Fri, 01 Mar 2024 12:01:00 GMT</pubDate>
+      <description>Fictional article written for a parser test.</description>
+    </item>
+    <item>
+      <title>Demo Instruments unveils a prototype</title>
+      <link>https://example.invalid/rss/2</link>
+      <pubDate>Fri, 01 Mar 2024 12:02:00 GMT</pubDate>
+      <description>Fictional article written for a parser test.</description>
+    </item>
+    <item>
+      <title>Mock Materials tests a new coating</title>
+      <link>https://example.invalid/rss/3</link>
+      <pubDate>Fri, 01 Mar 2024 12:03:00 GMT</pubDate>
+      <description>Fictional article written for a parser test.</description>
+    </item>
+    <item>
+      <title>Lab finishes a mock durability trial</title>
+      <link>https://example.invalid/rss/4</link>
+      <pubDate>Fri, 01 Mar 2024 12:04:00 GMT</pubDate>
+      <description>Fictional article written for a parser test.</description>
+    </item>
+    <item>
+      <title>Demo Instruments schedules a product briefing</title>
+      <link>https://example.invalid/rss/5</link>
+      <pubDate>Fri, 01 Mar 2024 12:05:00 GMT</pubDate>
+      <description>Fictional article written for a parser test.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+# THE single source of risk parameters (doc 06). Code contains no magic numbers.
+max_position_weight: 0.10          # per name, per agent book
+max_position_weight_oracle: 0.12   # oracle runs concentrated theses
+max_gross_exposure: 1.00           # long-only, no leverage (v1)
+max_positions_sentinel: 6          # concurrent names SENTINEL may hold — a concentration
+                                   # control, so it lives here, not in agent code (doc 06)
+max_positions_oracle: 8            # concurrent names ORACLE may hold (concentration control)
+# ORACLE (LLM analyst) budget governor — Phase 5. Not market risk, but the LLM cost limits live
+# with the other operational params (like slippage_bps_assumed). Over the soft budget the run
+# DEGRADES (WARN, fewer deep dives); the hard ceiling REFUSES the research phase. The soft alarm
+# is WARN, never CRITICAL: a CRITICAL trips runner._global_freeze() and would halt QUANT and
+# SENTINEL over ORACLE's spend (doc 09).
+oracle_monthly_budget_usd: 25      # soft cap: WARN + cut deep dives to oracle_max_deep_names
+oracle_monthly_hard_ceiling_usd: 50 # hard cap: refuse the research phase entirely
+oracle_max_deep_names: 6           # degraded candidate count once over the monthly budget
+min_adv_dollars: 50000000          # 21d average dollar volume floor
+max_order_pct_adv: 0.01            # participation cap (live discipline)
+min_price: 5.0
+price_jump_reject: 0.10            # last vs prev close sanity band
+max_daily_turnover: 0.50           # of agent book value
+kill_switch_drawdown: 0.15         # paper; tighten to 0.10 for live (doc 10)
+close_buffer_minutes: 2
+slippage_bps_assumed: 5            # backtest + eval cost model
+execution_limit_bps: 50           # marketable-limit buffer vs last price; wide enough to
+                                   # cross the free IEX feed's spreads on paper (doc 06 = 10
+                                   # for live SIP). A bad-fill cap, not the fill mechanism.

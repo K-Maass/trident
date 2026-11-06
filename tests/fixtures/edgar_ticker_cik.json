@@ -1,0 +1,12 @@
+{
+  "0": {
+    "cik_str": 123,
+    "ticker": "DEMO",
+    "title": "Demo Instruments"
+  },
+  "1": {
+    "cik_str": 456,
+    "ticker": "MOCK",
+    "title": "Mock Materials"
+  }
+}

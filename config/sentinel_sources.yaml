@@ -1,0 +1,65 @@
+# SENTINEL source registry (doc 04). The pipeline reads this file — no source
+# names or weights are hardcoded. Rules enforced by aggregate.py:
+#   1. disabled / missing-env / stale sources contribute nothing this cycle;
+#      remaining sentiment weights are RENORMALIZED to sum to 1 (WARN event fires).
+#   2. kind=raw_text      -> scored by our FinBERT (after Haiku relevance filter)
+#      kind=pre_scored    -> provider score clamped to [-1,1]; provenance logged
+#      kind=attention_only-> feeds attention_z only, never sent_raw
+#   3. max_staleness_hours is checked by the 07:30 ET freshness job.
+# Limits here are conservative ceilings for undocumented free services.
+
+sources:
+  finnhub_news:
+    enabled: true
+    kind: raw_text
+    weight: 1.0
+    env: [FINNHUB_API_KEY]
+    rate_limit_per_min: 48        # 80% of documented 60/min
+    max_staleness_hours: 24
+
+  rss:
+    enabled: true
+    kind: raw_text
+    weight: 0.8
+    env: []
+    feeds:
+      - https://finance.yahoo.com/rss/headline?s={ticker}
+      - https://www.cnbc.com/id/100003114/device/rss/rss.html   # CNBC Markets
+      - https://feeds.content.dowjones.io/public/rss/mw_topstories  # MarketWatch
+      - https://seekingalpha.com/market_currents.xml
+    max_staleness_hours: 24
+
+  apewisdom:
+    enabled: true
+    kind: attention_only
+    weight: 1.0                   # attention leg weight (averaged with raw item counts)
+    env: []
+    base_url: https://apewisdom.io/api/v1.0/filter/all-stocks/page/{page}
+    polls_per_day: 2
+    max_staleness_hours: 30
+
+  tradestie_wsb:
+    enabled: true
+    kind: pre_scored
+    weight: 0.5
+    env: []
+    base_url: https://api.tradestie.com/v1/apps/reddit
+    rate_limit_per_min: 16        # 80% of documented 20/min/IP
+    polls_per_day: 2
+    supports_historical: true     # ?date=MM-DD-YYYY -> Phase 1 backfill
+    max_staleness_hours: 30
+
+  reddit_praw:
+    enabled: false                # flip to true ONLY after Reddit app approval (docs/02)
+    kind: raw_text
+    weight: 0.4
+    env: [REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USER_AGENT]
+    subreddits: [wallstreetbets, stocks, investing]
+    max_staleness_hours: 24
+
+  stocktwits:
+    enabled: false                # verify-or-drop: Phase 1 probe (API frozen to new devs, 2026)
+    kind: pre_scored              # bull/bear self-labels
+    weight: 0.5
+    env: []
+    max_staleness_hours: 24

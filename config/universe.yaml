@@ -1,0 +1,103 @@
+# Shared universe — all agents trade only these (apples-to-apples comparison).
+# Inclusion rules (doc 00): price > $5, 21d avg dollar volume > $50M, listed > 2y.
+# Phase 7: expand toward S&P 100. SPY is BENCH-only, not an agent pick.
+benchmark: SPY
+tickers:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - GOOGL
+  - META
+  - TSLA
+  - AVGO
+  - BRK.B
+  - JPM
+  - V
+  - MA
+  - UNH
+  - LLY
+  - JNJ
+  - PG
+  - XOM
+  - CVX
+  - HD
+  - COST
+  - WMT
+  - KO
+  - PEP
+  - MRK
+  - ABBV
+  - BAC
+  - CRM
+  - AMD
+  - NFLX
+  - ADBE
+  - ORCL
+  - CSCO
+  - INTC
+  - QCOM
+  - TXN
+  - DIS
+  - NKE
+  - MCD
+  - CAT
+  - GE
+
+# CIK pins that override SEC's ticker->CIK registry (data/fundamentals.py::cik_for).
+# Only add an entry with evidence, and say what the evidence was.
+#
+# XOM (found 2026-07-21, ORACLE Phase 5): the registry maps ticker XOM to CIK 2115436,
+# "EXXON MOBIL CORP" — a 2026 POSASR filing shell whose companyfacts JSON is 1.2 KB with
+# ZERO us-gaap facts. The operating company is CIK 34088, "Exxon Mobil Corporation", which
+# serves full facts. Left unpinned, XOM silently returns 0 fiscal years and drops out of
+# ORACLE's screen without an error — the exact silent-failure class golden rule 8 forbids.
+cik_overrides:
+  XOM: 34088
+
+# GICS sectors — ORACLE's compare_peers groups on this (doc 05). Static config rather than a
+# derived field: EDGAR carries SIC, not GICS, and SIC would split these 40 names into groups of
+# one. Peer groups here are small by construction (Energy and Industrials hold 2 names each), so
+# compare_peers reports the peer count and never presents a 1-peer comparison as a sector median.
+# Phase 7 expands the universe toward the S&P 100; extend this map in the same commit.
+sectors:
+  AAPL: Information Technology
+  MSFT: Information Technology
+  NVDA: Information Technology
+  AVGO: Information Technology
+  CRM: Information Technology
+  AMD: Information Technology
+  ADBE: Information Technology
+  ORCL: Information Technology
+  CSCO: Information Technology
+  INTC: Information Technology
+  QCOM: Information Technology
+  TXN: Information Technology
+  GOOGL: Communication Services
+  META: Communication Services
+  NFLX: Communication Services
+  DIS: Communication Services
+  AMZN: Consumer Discretionary
+  TSLA: Consumer Discretionary
+  HD: Consumer Discretionary
+  NKE: Consumer Discretionary
+  MCD: Consumer Discretionary
+  BRK.B: Financials
+  JPM: Financials
+  V: Financials          # GICS moved payment networks to Financials in the 2023 revision
+  MA: Financials
+  BAC: Financials
+  UNH: Health Care
+  LLY: Health Care
+  JNJ: Health Care
+  MRK: Health Care
+  ABBV: Health Care
+  PG: Consumer Staples
+  COST: Consumer Staples
+  WMT: Consumer Staples
+  KO: Consumer Staples
+  PEP: Consumer Staples
+  XOM: Energy
+  CVX: Energy
+  CAT: Industrials
+  GE: Industrials

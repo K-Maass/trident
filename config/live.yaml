@@ -1,0 +1,7 @@
+# ================= PROTECTED FILE =================
+# Claude Code is hook-blocked from editing this file.
+# Only the operator edits it, only after every gate in docs/10_GO_LIVE.md passes.
+armed: false
+enabled_agents: []        # e.g. ["quant"]
+max_capital_chf: 0        # per enabled agent; gate G8 caps at 1000
+armed_by: null            # your name + date, as a deliberate act

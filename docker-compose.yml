@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: trident-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: trident
+      POSTGRES_PASSWORD: ${TRIDENT_DB_PASSWORD:?Set TRIDENT_DB_PASSWORD in .env}
+      POSTGRES_DB: trident
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - trident_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trident"]
+      interval: 5s
+      retries: 10
+
+  adminer:
+    image: adminer:latest
+    container_name: trident-adminer
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  trident_pgdata:

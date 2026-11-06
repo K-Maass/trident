@@ -1,0 +1,32 @@
+[
+  {
+    "datetime": 1709294460,
+    "headline": "Demo Instruments opens a test facility",
+    "summary": "Fictional article written for a parser test.",
+    "url": "https://example.invalid/finnhub/1"
+  },
+  {
+    "datetime": 1709294520,
+    "headline": "Demo Instruments unveils a prototype",
+    "summary": "Fictional article written for a parser test.",
+    "url": "https://example.invalid/finnhub/2"
+  },
+  {
+    "datetime": 1709294580,
+    "headline": "Mock Materials tests a new coating",
+    "summary": "Fictional article written for a parser test.",
+    "url": "https://example.invalid/finnhub/3"
+  },
+  {
+    "datetime": 1709294640,
+    "headline": "Lab finishes a mock durability trial",
+    "summary": "Fictional article written for a parser test.",
+    "url": "https://example.invalid/finnhub/4"
+  },
+  {
+    "datetime": 1709294700,
+    "headline": "Demo Instruments schedules a product briefing",
+    "summary": "Fictional article written for a parser test.",
+    "url": "https://example.invalid/finnhub/5"
+  }
+]
